@@ -1,4 +1,28 @@
+@import "~antd/dist/antd.css";
+
 * {
   padding: 0;
   margin: 0;
+  font-size: 1.1em;
+}
+
+.admin-row {
+  height: 100vh;
+}
+
+.navbar-col {
+  background: #000000;
+}
+
+.content-col {
+  padding: 20px;
+  background: #bfbfbf;
+}
+
+.navbar-container a {
+  color: #ffffff;
+}
+
+.no-list-deco {
+  list-style-type: none;
 }
