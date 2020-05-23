@@ -18,7 +18,8 @@ const useFetch = (initialData: string[], initialUrl: string) => {
       try {
         const response = await axios(url);
         const postList = response.data.data.list;
-        console.log(postList);
+        console.log(response.data.data);
+        console.log(response.data.data.list);
         setPosts(postList);
 
         if (postList.length > 0) {
@@ -43,9 +44,10 @@ const ChartList = () => {
 
   return (
     <Space size={20} className="chart-list">
-      {isError && <div>Something Went Wrong! Fixing it Right Away!</div>}
-      {isLoading ? (
-        <div>Charts Coming Soon :)</div>
+      {isError ? (
+        <div>Something Went Wrong! Fixing it Right Away!</div>
+      ) : isLoading ? (
+        <div>Charts Coming Soon...</div>
       ) : (
         posts &&
         posts.map((post: any, e: number) => {
