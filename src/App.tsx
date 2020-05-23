@@ -1,14 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { Row, Col, Typography } from "antd";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGlobeAmericas } from "@fortawesome/free-solid-svg-icons";
+import { Row, Col } from "antd";
 
 import NavBar from "./components/NavBar";
+import TopBar from "./components/TopBar";
 import Home from "./pages/Home";
 
 const App = () => {
-  const { Title } = Typography;
   return (
     <Router>
       <Row className="admin-row">
@@ -16,10 +14,7 @@ const App = () => {
           <NavBar />
         </Col>
         <Col span={22} className="content-col">
-          <Title level={2}>
-            New Jersey Coronavirus Map Admin{" "}
-            <FontAwesomeIcon icon={faGlobeAmericas} size="lg" />
-          </Title>
+          <TopBar />
           <Switch>
             <Route exact path="/" component={Home} />
           </Switch>
