@@ -22,3 +22,10 @@ For more information, please visit the [Centers for Disease Control and Preventi
 ## Credits/Disclaimer 👏
 
 Pictures and information written about COVID-19 are not done by me. Credit goes to [Centers for Disease Control and Prevention](https://www.cdc.gov/coronavirus/2019-ncov/index.html). For more information, please visit their [website](https://www.cdc.gov/coronavirus/2019-ncov/index.html).
+
+## Todo ☑️
+
+- Automatically get data by web scraping when I click update
+  - Have it preview data that it's going to send to API (for every chart it's different, account for that)
+  - So there won't be a need to upload any files
+- Host this on the web
