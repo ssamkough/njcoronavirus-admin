@@ -26,3 +26,7 @@
 .no-list-deco {
   list-style-type: none;
 }
+
+.upload-file-btn {
+  margin-top: 16px;
+}
