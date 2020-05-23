@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col, Input } from "antd";
+import { Row, Col } from "antd";
 
 import ChartList from "../components/charts/ChartList";
 
@@ -9,11 +9,6 @@ const Home = () => {
       <Row>
         <Col>
           <ChartList />
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <Input size="large" placeholder="chart details" />
         </Col>
       </Row>
     </div>
