@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Upload, Card, Menu, Button, Modal, message } from "antd";
 import { InboxOutlined } from "@ant-design/icons";
 import axios from "axios";
-import puppeteer from "puppeteer-extra";
-import StealthPlugin from "puppeteer-extra-plugin-stealth";
 
 const ChartItem = (post: any) => {
   const postItem = post.post;
@@ -13,47 +11,11 @@ const ChartItem = (post: any) => {
 
   const [visible, setVisible] = useState(false);
   const [btnType, setBtnType] = useState("");
-  const [file, setFile] = useState(File as any);
   const [uploading, setUploading] = useState(false);
 
   const showModal = (e: any) => {
     setBtnType(e.target.name);
     setVisible(true);
-  };
-
-  const scrape = () => {
-    puppeteer.use(StealthPlugin());
-
-    puppeteer.launch({ headless: true }).then(async (browser) => {
-      console.log("Running tests..");
-
-      const page = await browser.newPage();
-      const covidUrl =
-        "https://maps.arcgis.com/apps/opsdashboard/index.html#/ec4bffd48f7e495182226eee7962b422";
-
-      await page.goto(covidUrl);
-      await page.waitFor(1000);
-
-      let emberId = 165;
-      while (emberId <= 205) {
-        let xpath = `//*[@id="ember${emberId}"]/div/div/p[1]/strong`;
-        let [town] = await page.$x(xpath);
-        let townTxt = await town.getProperty("textContent");
-        let townRawTxt = await townTxt.jsonValue();
-
-        xpath = `//*[@id="ember${emberId}"]/div/div/p[2]/span/span/strong`;
-        let [number] = await page.$x(xpath);
-        let numberTxt = await number.getProperty("textContent");
-        let numberRawTxt = await numberTxt.jsonValue();
-
-        console.log(townRawTxt, ": ", numberRawTxt);
-
-        emberId = emberId + 2;
-      }
-
-      await browser.close();
-      console.log(`All done ✨`);
-    });
   };
 
   const handleOk = (e: any) => {
@@ -64,11 +26,11 @@ const ChartItem = (post: any) => {
     setVisible(false);
   };
 
-  const handleUpload = () => {
-    const formData = new FormData();
-    formData.append("file", file);
-    setUploading(true);
-  };
+  // const handleUpload = () => {
+  //   const formData = new FormData();
+  //   formData.append("file", file);
+  //   setUploading(true);
+  // };
 
   const uploadProps = {
     // onRemove: (file: File) => {
@@ -114,7 +76,7 @@ const ChartItem = (post: any) => {
       >
         {btnType === "btnUpdate" ? (
           <div>
-            <Dragger {...uploadProps}>
+            {/* <Dragger {...uploadProps}>
               <p className="ant-upload-drag-icon">
                 <InboxOutlined />
               </p>
@@ -130,7 +92,7 @@ const ChartItem = (post: any) => {
               className="upload-file-btn"
             >
               {uploading ? "Uploading" : "Start Upload"}
-            </Button>
+            </Button> */}
           </div>
         ) : btnType === "btnDetails" ? (
           <Menu>
