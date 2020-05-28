@@ -17,9 +17,7 @@ const useFetch = (initialData: string[], initialUrl: string) => {
 
       try {
         const response = await axios(url);
-        const postList = response.data.data.list;
-        console.log(response.data.data);
-        console.log(response.data.data.list);
+        const postList = JSON.parse(response.data.data).list;
         setPosts(postList);
 
         if (postList.length > 0) {
